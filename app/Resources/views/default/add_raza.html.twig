@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %} {% block body %}
+<div class="container">
+    <form method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="EG: Perro">
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+{% endblock %}

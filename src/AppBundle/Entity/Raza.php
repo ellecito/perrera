@@ -19,4 +19,40 @@ class Raza{
      * @ORM\Column(type="string", length=100)
      */
     private $name;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId(){
+        return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName(){
+        return $this->name;
+    }
+
+    /**
+     * Set id
+     *
+     * @return void
+     */
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    /**
+     * Set name
+     *
+     * @return void
+     */
+    public function setName($name){
+        $this->name = $name;
+    }
 }
