@@ -39,6 +39,24 @@ class Usuario{
      * @ORM\OneToMany(targetEntity="Animal", mappedBy="usuario")
      */
     private $animales;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId(){
+        return $this->id;
+    }
+
+    /**
+     * Get first_name
+     *
+     * @return string
+     */
+    public function getFirstName(){
+        return $this->first_name;
+    }
     
     public function __construct(){
         $this->animales = new ArrayCollection();

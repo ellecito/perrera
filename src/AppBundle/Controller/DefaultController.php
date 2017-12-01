@@ -8,13 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class DefaultController extends Controller
-{
+class DefaultController extends Controller{
+
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request){
         if($request->getMethod() === "POST"){
             $repository = $this->getDoctrine()->getRepository(Usuario::class);
             $usuario = $repository->findOneBy(
@@ -28,9 +27,9 @@ class DefaultController extends Controller
             }else{
                 $session = $request->getSession();
                 $session->start();
-                $session->set('usuario', $usuario);          
+                $session->set('usuario', $usuario);
+                return $this->redirectToRoute('animal');
             }
-        
         }else{
             return $this->render('default/index.html.twig', [
                 'title' => 'Login',

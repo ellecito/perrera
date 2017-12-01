@@ -47,6 +47,12 @@ class Animal{
     private $usuario;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Raza", inversedBy="animales")
+     * @ORM\JoinColumn(name="raza_id", referencedColumnName="id")
+     */
+    private $raza;
+
+    /**
      * Get id
      *
      * @return int
@@ -110,6 +116,15 @@ class Animal{
     }
 
     /**
+     * Get raza
+     *
+     * @return object
+     */
+    public function getRaza(){
+        return $this->raza;
+    }
+
+    /**
      * Set id
      *
      * @return void
@@ -170,5 +185,14 @@ class Animal{
      */
     public function setUsuario($usuario){
         $this->usuario = $usuario;
+    }
+
+    /**
+     * Set raza
+     *
+     * @return void
+     */
+    public function setRaza($raza){
+        $this->raza = $raza;
     }
 }

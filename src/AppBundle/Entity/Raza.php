@@ -21,6 +21,11 @@ class Raza{
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Animal", mappedBy="raza")
+     */
+    private $animales;
+
+    /**
      * Get id
      *
      * @return int
