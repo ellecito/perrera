@@ -21,7 +21,7 @@ class Animal{
     private $name;
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(type="integer")
      */
     private $price;
 

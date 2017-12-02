@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %} {% block body %}
 <div class="wrapper">
+    <div style="text-align: right;">
+        <a href="/animal/create/">Agregar animal</a>
+    </div>
     <div class="container">
-        {% for i in 1..10 %}
+        {% for animal in animales %}
         <div class="media">
-            <img class="align-self-center mr-3" src="{{ cycle(['https://pbs.twimg.com/profile_images/341999113/perro_feliz_400x400.jpg', 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Gato_irritado.jpg'], i) }}"
+            <img class="align-self-center mr-3" src="{{ animal.picture ? animal.picture : 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Gato_irritado.jpg'}}"
                 width="10%">
             <div class="media-body">
-                <h5 class="mt-0">Center-aligned media</h5>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
-                    vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                    Donec lacinia congue felis in faucibus.</p>
-                <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et
-                    magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <h5 class="mt-0">{{ animal.name }}</h5>
+                <p>{{ animal.description }}</p>
+                <p class="mb-0">{{ animal.age}} ano{{ animal.age == 1 ? '' : 's'}}</p>
+                <p class="mb-0">{{ animal.price ? ('$' ~ animal.price|number_format(0, ',', '.')) : 'Gratis' }}</p>
             </div>
         </div>
         {% endfor %}

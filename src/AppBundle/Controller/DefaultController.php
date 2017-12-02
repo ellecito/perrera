@@ -14,6 +14,7 @@ class DefaultController extends Controller{
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request){
+        if($request->getSession()->get('usuario')) return $this->redirectToRoute('animal');
         if($request->getMethod() === "POST"){
             $repository = $this->getDoctrine()->getRepository(Usuario::class);
             $usuario = $repository->findOneBy(

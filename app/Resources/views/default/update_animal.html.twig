@@ -6,32 +6,34 @@
     <form method="POST" id="form-animal" enctype="multipart/form-data">
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control validate[required]" id="nombre" name="nombre" placeholder="EG: Firulais">
+            <input type="text" class="form-control validate[required]" id="nombre" name="nombre" placeholder="EG: Firulais" value="{{ animal.name }}">
         </div>
         <div class="form-group">
             <label for="precio">Precio</label>
-            <input type="number" class="form-control validate[custom[integer]]" id="precio" name="precio" placeholder="Ojalá Gratis">
+            <input type="number" class="form-control validate[custom[integer]]" id="precio" name="precio" placeholder="Ojalá Gratis"
+                value="{{ animal.price }}">
         </div>
         <div class="form-group">
             <label for="descripcion">Descripción</label>
-            <textarea class="form-control validate[required]" id="descripcion" name="descripcion" rows="3"></textarea>
+            <textarea class="form-control validate[required]" id="descripcion" name="descripcion" rows="3">{{ animal.description }}</textarea>
         </div>
         <div class="form-group">
             <label for="edad">Edad</label>
-            <input type="number" class="form-control validate[required, custom[integer]]" id="edad" name="edad" placeholder="EG: 5">
+            <input type="number" class="form-control validate[required, custom[integer]]" id="edad" name="edad" placeholder="EG: 5" value="{{ animal.age }}">
         </div>
         <div class="form-group">
             <label for="raza">Raza</label>
             <select class="form-control validate[required]" id="raza" name="raza">
                 <option disabled selected>Seleccione</option>
                 {% for raza in razas %}
-                <option value="{{ raza.id }}">{{ raza.name }}</option>
+                <option value="{{ raza.id }}" {{ animal.raza.id==raza.id ? " selected" : "" }}>{{ raza.name }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="form-group">
             <label for="foto">Foto</label>
-            <input type="file" class="form-control-file validate[required]" id="foto" name="foto" accept="image/*">
+            <input type="file" class="form-control-file{{animal.picture == '' ? " validate[required] " : " "}}" id="foto" name="foto"
+                accept="image/*">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
